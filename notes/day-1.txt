@@ -1,0 +1,29 @@
+pre-test google forms url:
+---------------------------
+https://forms.gle/u9Ko8XeAuAoNP1rq6
+
+please enter official siemens email id in the email field
+
+git repository:
+https://github.com/joydip-git/siemens-angular-10thAugust2026
+
+JavaScript and TypeScript
+Node JS
+
+Angular
+
+s/w:
+Visual Studio Code
+Node JS
+
+HTML
+CSS -> Cascading Style Sheet
+
+style-property-name: value;
+
+1. inline style -> on the element directly using "style" attribute
+2. outline style -> using <style> tag in the <head> or <body> or both 
+3. outfile style -> in a separate file with extension .css
+
+JavaScript:
+--------------------
