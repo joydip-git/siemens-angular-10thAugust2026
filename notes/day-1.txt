@@ -27,3 +27,21 @@ style-property-name: value;
 
 JavaScript:
 --------------------
+data types:
+	number, boolean, string, object
+
+declaration:
+	var x=10
+
+keywords:
+	undefined, NaN, Infinity, null etc.
+
+JS interpreter:
+-------------------
+chrome 	-> V8
+safari 	-> JS Core (indigo)
+firefox -> Spidermonkey
+edge 	-> chakra -> chromekit browser
+
+
+Ryan Dahl -> V8 engine and Node JS
