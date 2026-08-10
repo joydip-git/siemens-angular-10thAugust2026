@@ -45,3 +45,35 @@ edge 	-> chakra -> chromekit browser
 
 
 Ryan Dahl -> V8 engine and Node JS
+
+
+Angular:
+------------------
+client-side JS framework to create front-end web app
+single-page app (SPA)
+
+
+angular cli
+
+var element = document.createElement('h2')
+element.txtContext/value/innerText=title
+document.getElementById('app-root').append(element)
+
+
+Binding:
+-------------------
+a. passing data from code to template of the same component: data bidning
+i. interpolation: {{prop-name}} -> stringified
+ii. property binding: <element [attribute]="prop">
+
+b. pasing data from the template to the code of the same component:
+event binding
+
+<element (event-name)="method-in-code(args....)>
+
+ChangeDetector -> detectChanges()
+
+Zone.js -> inform or notify angular about changes
+
+signal()
+

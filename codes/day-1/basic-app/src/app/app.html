@@ -1,0 +1,15 @@
+<h2>
+  Welcome to Angular
+</h2>
+<br>
+<h4>computed title: {{title()}}</h4>
+<br>
+<div>
+  <label for="txtTitle">New Title: &nbsp;</label>
+  <!-- <input type="text" id="txtTitle" [style.width.px]="inputWidth" [value]="title()"
+    (input)="updateTitle($event.target.value)"> -->
+    <input type="text" id="txtTitle" [style.width.px]="inputWidth" [value]="title()"
+      (input)="title.set($event.target.value)">
+</div>
+<br>
+<app-second></app-second>
