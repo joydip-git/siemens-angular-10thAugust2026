@@ -61,4 +61,112 @@ export class CurrencyPipe implements PipeTransform{
 
 {{p.salary|currency:'INR':'':''}} => new CurrencyPipe().transform(salary,'INR')
 
+Service:
+--------------
+export class CalculationService{
+	add(a:number, b: number: number{
+		return a+b
+	}
+}
+
+Provider
+	ClassProvider: {provider: , useClass: }
+	ValueProvider: {provider: , useValue: }
+	{
+		provider: 'API_URL_TOKEN',
+		useValue: 'http://....'
+	}
+	FactoryProvider: {provider: , useFactory:()=>{ } }
+	ExistingProvider: {provider:, useExisting: }
+
+Dependency Injection of the service:
+------------------------------------------
+
+A. when token name is same as that of the service class name
+
+token: CalculationService
+
+provider:Provider
+
+{
+	provide: CalculationService
+	useClass: CalculationService
+}
+
+consuming the service:
+
+1. using constructor
+----------------------
+export class Calculator{
+	private calcSvc:CalculationService;
+
+	constructor(svc:CalculationService){
+		this.calcSvc = svc
+	}
+}
+
+2. using inject() method
+------------------------
+export class Calculator{
+	private calcSvc:CalculationService = inject(CalculationService);
+}
+
+
+B. When token is a string value
+----------------------------------------
+token:'TOKEN'
+
+provider:
+{
+	provide: ‘TOKEN’
+	useClass: CalculationService
+}
+
+1. using constructor
+---------------------------
+export class Calculator{
+	private calcSvc:CalculationService;
+
+	constructor(@Inject('TOKEN') svc:CalculationService){
+		this.calcSvc = svc
+	}
+}
+
+2. using inject() method
+-------------------------------
+//not possible to use inject() method string type token
+export class Calculator{
+	private calcSvc:CalculationService = inject(CalculationService);
+}
+
+C. when token is an InjectionToken type object
+-------------------------------------------------
+token: 
+export const TOKEN = new InjectionToken<CalculationService>(‘TOKEN’)
+
+provider:
+{
+	provide: TOKEN
+	useClass: CalculationService
+}
+
+1. using constructor
+------------------------------
+export class Calculator{
+	private calcSvc:CalculationService;
+
+	constructor(@Inject(TOKEN) svc:CalculationService){
+		this.calcSvc = svc
+	}
+}
+
+2. using inject() method
+-------------------------------
+export class Calculator{
+	private calcSvc:CalculationService = inject<CalculationService>(TOKEN);
+}
+
+
+
+
 
