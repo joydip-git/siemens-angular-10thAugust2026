@@ -1,7 +1,8 @@
-import { Component, input, signal } from '@angular/core';
-import { productrecords } from '../../../../data/productrecords';
+import { Component, inject, input, signal } from '@angular/core';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 import { ProductFilterPipe } from '../../pipes/product-filter-pipe';
+import { Product } from '../../../../models/product';
+import { PRODUCT_SERVICE_TOKEN } from '../../../../configs/constants';
 
 @Component({
   selector: 'app-product-list',
@@ -10,6 +11,13 @@ import { ProductFilterPipe } from '../../pipes/product-filter-pipe';
   styleUrl: './product-list.css',
 })
 export class ProductList {
+  
   filterText = input<string>('')
-  products = signal(productrecords)
+  protected products = signal<Product[]>([])
+  
+  private productSvcRef = inject(PRODUCT_SERVICE_TOKEN)
+
+  constructor() {
+    this.products.set(this.productSvcRef.getProducts())
+  }
 }
