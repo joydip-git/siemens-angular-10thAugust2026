@@ -31,3 +31,34 @@ a. passing data between a parent and nested component when the components are sh
 
 	@Output() -> Use in components with the @Output directive to emit custom events synchronously or asynchronously, and register handlers for those events by subscribing to an instance.
 b. passing data between a parent and nested component when the components are deeply nested
+
+
+
+Pipes:
+-------------------
+
+@Pipe({
+	name:'uppercase'
+})
+export class UppercasePipe{
+	transform(value:string, ...args:any[]):string{
+		return value.toLocaleUpperCase()
+	}
+}
+
+
+{{name|uppercase}} => new UppercasePipe().transform(name)
+
+
+@Pipe({
+	name:'currency'
+})
+export class CurrencyPipe implements PipeTransform{
+	transform(value:any, ...args:any[]):any{
+		return value.toLocaleUpperCase()
+	}
+}
+
+{{p.salary|currency:'INR':'':''}} => new CurrencyPipe().transform(salary,'INR')
+
+

@@ -22,4 +22,9 @@
   }
 </select>
 <br>
-<app-todo-list [todoinfo]="todos()" (todoinfoChanged)="updateATodo($event)"></app-todo-list>
+<br>
+<br>
+<app-filter-todos (filterDataChanged)="getFilterData($event )"></app-filter-todos>
+<br>
+<br>
+<app-todo-list [filterText]="filterValue()" [todoinfo]="todos()" (todoinfoChanged)="updateATodo($event)"></app-todo-list>

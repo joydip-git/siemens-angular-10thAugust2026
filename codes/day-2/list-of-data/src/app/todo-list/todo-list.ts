@@ -1,9 +1,11 @@
 import { Component, EventEmitter, input, Input, output, Output, signal } from '@angular/core';
 import { Todo } from '../models/todo';
+import { UpperCasePipe } from '@angular/common';
+import { TodoFilterPipe } from '../pipes/todo-filter-pipe';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [],
+  imports: [UpperCasePipe, TodoFilterPipe],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.css',
 })
@@ -11,6 +13,7 @@ export class TodoList {
   // @Input('todoinfo') tododata = signal<Todo[]>([])
   // @Output('todoinfoChanged') tododataChanged = new EventEmitter<Todo>()
 
+  filterText = input('')
   tododata = input<Todo[]>([], { alias: 'todoinfo' })
   tododataChanged = output<Todo>({ alias: 'todoinfoChanged' })
 

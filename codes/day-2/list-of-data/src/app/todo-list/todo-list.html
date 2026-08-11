@@ -8,14 +8,15 @@
         </tr>
     </thead>
     <tbody>
-        @for (todo of tododata(); track $index) {
+        @for (todo of (tododata()|todoFilter:filterText()); track $index) {
         <tr>
-            <td>{{todo.title}}</td>
+            <td>{{todo.title|uppercase}}</td>
             <td>
                 <input type="text" [value]="todo.userId" (input)="updateUserId(+$event.target.value, todo.id)">
             </td>
             <td>
-                <input type="checkbox" name="" id="chkStatus" [checked]="todo.completed" (change)="updateStatus($event.target.checked,todo.id)">
+                <input type="checkbox" name="" id="chkStatus" [checked]="todo.completed"
+                    (change)="updateStatus($event.target.checked,todo.id)">
             </td>
         </tr>
         }
