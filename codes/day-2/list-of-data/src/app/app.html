@@ -1,0 +1,25 @@
+@if(names().length>0){
+<ul>
+  <!-- <li *ngFor="let name of names">
+    {{name}}
+  </li> -->
+  @for (name of names(); track $index) {
+  <li>{{name}}</li>
+  }
+</ul>
+}
+@else {
+<span>no names</span>
+}
+<br>
+<h3>List of Todos</h3>
+<br>
+<select name="" id="">
+  <option value="" selected disabled>--select--</option>
+  @for (todo of todos(); track $index) {
+  <option value="">{{todo.title}}&nbsp;{{todo.userId}}&nbsp;&nbsp;{{todo.completed?'done':'pending'}}
+  </option>
+  }
+</select>
+<br>
+<app-todo-list [todoinfo]="todos()" (todoinfoChanged)="updateATodo($event)"></app-todo-list>

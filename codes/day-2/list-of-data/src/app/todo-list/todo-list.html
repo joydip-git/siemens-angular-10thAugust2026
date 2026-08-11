@@ -1,0 +1,24 @@
+@if(tododata().length>0){
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (todo of tododata(); track $index) {
+        <tr>
+            <td>{{todo.title}}</td>
+            <td>
+                <input type="text" [value]="todo.userId" (input)="updateUserId(+$event.target.value, todo.id)">
+            </td>
+            <td>
+                <input type="checkbox" name="" id="chkStatus" [checked]="todo.completed" (change)="updateStatus($event.target.checked,todo.id)">
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+}

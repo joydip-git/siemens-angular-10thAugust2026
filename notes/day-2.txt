@@ -1,0 +1,33 @@
+@Directive({
+	selector:'[ngFor]'
+})
+export class NgFor{
+	render(template:HTMLElement, expression:string){
+		var templates = []
+		for(let name of names){
+			var li = document.createElement(template)
+			li.text = name
+			templates.push(li)
+		}
+		return templates
+	}
+}
+
+directive:
+----------------------
+a. structural directive: they manipulate DOM
+ex: *ngFor, *ngIf, *ngSwitch etc.
+
+b. attribute directive: they extend the behavior of the element
+ex: ngModel, ngForm, ....
+
+c. component directive: components, a directive with a template or view
+
+
+how to pass data from one to another component:
+------------------------------------------------------
+a. passing data between a parent and nested component when the components are shallowly nested
+	@Input() -> Decorator that marks a class field as an input property and supplies configuration metadata. The input property is bound to a DOM property in the template. During change detection, Angular automatically updates the data property with the DOM property's value.
+
+	@Output() -> Use in components with the @Output directive to emit custom events synchronously or asynchronously, and register handlers for those events by subscribing to an instance.
+b. passing data between a parent and nested component when the components are deeply nested

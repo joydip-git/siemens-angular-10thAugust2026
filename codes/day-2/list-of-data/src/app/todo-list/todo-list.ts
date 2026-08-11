@@ -1,0 +1,39 @@
+import { Component, EventEmitter, input, Input, output, Output, signal } from '@angular/core';
+import { Todo } from '../models/todo';
+
+@Component({
+  selector: 'app-todo-list',
+  imports: [],
+  templateUrl: './todo-list.html',
+  styleUrl: './todo-list.css',
+})
+export class TodoList {
+  // @Input('todoinfo') tododata = signal<Todo[]>([])
+  // @Output('todoinfoChanged') tododataChanged = new EventEmitter<Todo>()
+
+  tododata = input<Todo[]>([], { alias: 'todoinfo' })
+  tododataChanged = output<Todo>({ alias: 'todoinfoChanged' })
+
+  updateUserId(userId: number, id: number) {
+    const found = this.getTodoById(id)
+    if (found) {
+      //spread operator (...)
+      const copy = { ...found }
+      copy.userId = userId
+      this.tododataChanged.emit(copy)
+    }
+  }
+  updateStatus(newStatus: boolean, id: number) {
+    const found = this.getTodoById(id)
+    if (found) {
+      //spread operator (...)
+      const copy = { ...found }
+      copy.completed = newStatus
+      this.tododataChanged.emit(copy)
+    }
+  }
+
+  private getTodoById(id: number) {
+    return this.tododata().find((todo) => todo.id === id)
+  }
+}
