@@ -1,0 +1,87 @@
+app name: pms-app
+
+src (folder)
+	index.html
+	index.css
+	main.ts
+
+	app (folder)
+
+		app.config.ts
+		app-routes.ts
+
+		config (folder)
+			constants.ts [token and other const variables]
+			service-providers.ts [method(s) to create and return a provider]
+
+
+		modules (folder)
+
+			root (folder)
+				app.ts
+				app.html
+				app.css
+				app.spec.ts
+
+			products (folder)
+
+				models (folder)
+					product.ts (file with Product type)
+
+				data (folder)
+					product-records.ts (array of Product)
+		
+				services (folder)
+					service-contract.ts (interface)
+					product.service.ts (service class)
+				
+				components (folder)
+
+					product-container (folder)
+						product-container.ts
+						product-container.html
+						product-container.css
+						product-container.spec.ts
+
+					product-list (folder)
+						product-list.ts
+						product-list.html
+						product-list.css
+						product-list.spec.ts
+
+					filter-product (folder)
+						filter-product.ts
+						filter-product.css
+						filter-product.html
+						filter-product.spec.ts
+			
+				pipes (folder)
+					product-filter-pipe.ts
+					product-filter-pipe.spec.ts
+
+
+routing:
+-----------------
+url			component
+--------------------------------------
+/products		ProductContainer [ProductList + FilterProduct]
+/products/view/:id	ProductDetail [to be created in products\components folder]
+/products/edit		EditProduct [to be created in products\components folder]
+http://localhost:4200/edit?id=1
+/products/add		AddProduct [to be created in products\components folder]
+
+
+/home			Home [to be created in shared\components folder]
+''			Home [redirection]
+/anythingelse		PageNotFound [to be created in shared\components folder]
+
+Non-routed component
+DashBoard		[to be created in shared\components folder]
+with 3 links -> home, products, add product
+
+
+
+
+
+
+
