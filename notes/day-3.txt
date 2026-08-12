@@ -34,3 +34,82 @@ function Calculator(){
 new Calculator()
 
 
+Http Requests:
+-------------------
+package: @angular/common/http
+built-in service class: HttpClient
+provider: provideHttpClient() -> root file
+
+methods: get<T>(), post<T>(), put<T>(), delete<T>(),....
+
+rxjs: Reactive Extensions for JS
+
+
+export class TodoService{
+	private _http = inject(HttpClient)
+
+	getTodos():Observable<Todo[]>{
+		return this._http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
+	}
+}
+
+@if(!isRequestOver()){
+	<div>Loading...</div>
+}@else if(errorInfo()!==''){
+	<div>{{errorInfo()}}</div>
+}@else if(todos().length===0){
+	<div>no records</div>
+}@else{
+
+}
+
+export class TodoList{
+	private todoSvc = inject(TodoService)
+	todos = signal<Todo[]>([])
+	errorInfo = signal('')
+	isRequestOver = signal(false)
+
+	constructor(){
+		const obs = this.todoSvc.getTodos()		
+		obs.subscribe({		
+			next:(data) => {
+				this.todos.set(data)
+				this.errorInfo.set('')
+				this.isRequestOver.set(true)
+			},
+			error: (err) => {
+				this.todos.set([])
+				this.errorInfo.set(err.message)	
+				this.isRequestOver.set(true)
+			},
+			complete:() => {
+			}
+		})
+	}
+}
+
+
+lifecycle:
+-------------------
+1. mounting
+	- constructor call
+	- changes (when properties decorated with @Input() receives the value from parent) -> ngOnChanges(){}
+	- init (ONLY time in the lifecycle will be fired) -> ngOnInit(){}
+
+2. update
+	- changes (when properties decorated with @Input() receives the value from parent) -> ngOnChanges(){}
+
+3. destroy/unmount
+	- destroy -> ngOnDestroy(){}
+
+event name		interface	method
+-----------------------------------------------------------
+X			OnX		ngOnX
+init			OnInit		ngOnInit
+.............................................
+
+
+
+
+
+

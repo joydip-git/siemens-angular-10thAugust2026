@@ -1,0 +1,25 @@
+@if(!isRequestOver()){
+<div>Loading...</div>
+}@else if(errorInfo()!==''){
+<div>{{errorInfo()}}</div>
+}@else if(todos().length===0){
+<div>no records</div>
+}@else{
+<h3>List of Todos</h3>
+<br>
+<select name="" id="">
+  <option value="" selected disabled>--select--</option>
+  @for (todo of todos(); track $index) {
+  <option value="">{{todo.title}}&nbsp;{{todo.userId}}&nbsp;&nbsp;{{todo.completed?'done':'pending'}}
+  </option>
+  }
+</select>
+<br>
+<br>
+<br>
+<app-filter-todos (filterDataChanged)="getFilterData($event )"></app-filter-todos>
+<br>
+<br>
+<app-todo-list [filterText]="filterValue()" [todoinfo]="todos()"
+  (todoinfoChanged)="updateATodo($event)"></app-todo-list>
+}
