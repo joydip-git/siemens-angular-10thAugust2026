@@ -67,5 +67,34 @@ describe("Testing Calculator Component",
                 expect(calculator.choice()).toEqual(1)
             }
         )
+
+        it("when add radio button is selected and 10 and 2 are entered into the text boxes, upon clicking the calculate button, 12 is displayed in the result text box",
+            () => {
+                
+                const template = fixture.debugElement
+                const radio: HTMLElement = template.query(By.css('#radioAdd')).nativeElement
+                radio.click()
+                expect(calculator.choice()).toEqual(1)
+
+                const firstInput: HTMLInputElement = template.query(By.css('#txtFirst')).nativeElement
+                firstInput.value = "10"
+                firstInput.dispatchEvent(new InputEvent("input"))
+                expect(calculator.first()).toEqual(10)
+
+                const secondInput: HTMLInputElement = template.query(By.css('#txtSecond')).nativeElement
+                secondInput.value = "2"
+                secondInput.dispatchEvent(new InputEvent("input"))
+                expect(calculator.second()).toEqual(2)
+
+                const button: HTMLElement = template.query(By.css('#btnCalculate')).nativeElement
+                button.click()
+                expect(calculator.result()).toEqual(12)
+
+                fixture.detectChanges()                
+                const resultInput: HTMLInputElement = template.query(By.css('#txtResult')).nativeElement
+                
+                expect(resultInput.value).toEqual("12")
+            }
+        )
     }
 )

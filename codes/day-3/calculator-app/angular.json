@@ -24,9 +24,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -67,8 +65,9 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "runner": "vitest",
-            "coverage": true
+            "runner": "karma",
+            "coverage": true,
+            "runnerConfig": true
           }
         }
       }

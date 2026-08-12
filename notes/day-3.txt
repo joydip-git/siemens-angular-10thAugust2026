@@ -3,6 +3,9 @@ unit testing:
 karma -> test runner
 jasmine -> testing framework
 
+packages:
+npm install -D karma jasmine-core karma-jasmine karma-chrome-launcher karma-jasmine-html-reporter karma-coverage  @types/jasmine
+
 vite -> build tool
 vitest -> testing framework + runner
 

@@ -16,9 +16,9 @@ import { TOKEN } from '../configs/constants';
 export class Calculator {
   title = signal('welcome to calculator app')
   choice = signal(0)
-  protected first = signal(0)
-  protected second = signal(0)
-  protected result = signal(0)
+  first = signal(0)
+  second = signal(0)
+  result = signal(0)
 
   // private calcSvc: ServiceContract<number, number>;
   //1. when using class name as toke name (don't use interface name)
