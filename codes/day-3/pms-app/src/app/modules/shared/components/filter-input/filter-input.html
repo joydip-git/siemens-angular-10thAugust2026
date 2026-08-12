@@ -1,0 +1,4 @@
+<div>
+    <label for="txtFilter">Filter By: &nbsp;</label>
+    <input type="text" id="txtFilter" [value]="filterValue()" (input)="triggerFilterValueChanged($event.target.value)">
+</div>

@@ -1,0 +1,33 @@
+unit testing:
+---------------------
+karma -> test runner
+jasmine -> testing framework
+
+vite -> build tool
+vitest -> testing framework + runner
+
+for code coverage: install @vitest/coverage-v8
+command:
+>npm i @vitest/coverage-v8 -D
+
+
+TestBed: from @angular/core/testing
+Configures and initializes environment for unit testing and provides methods for creating components and services in unit tests.
+
+TestBed is the primary api for writing unit tests for Angular applications and libraries.
+
+
+Component => template (HTML) -> JS + code (TS) -> JS
+
+template (DebugElement)
+va h2 = document.createElement('h2')
+h2.innerText = title()
+code (Component)
+function Calculator(){
+	this.template=h2
+	this.title = signal('')
+	this.calcSvc = new...()
+}
+new Calculator()
+
+

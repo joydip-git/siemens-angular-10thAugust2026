@@ -1,0 +1,35 @@
+@if(products().length>0){
+<h2>List of Products</h2>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (p of products()|productFilter:filterText(); track $index) {
+        <tr>
+            <td>
+                <img [src]="p.imageUrl" alt="NA" title="{{p.productName}}" class="image-box">
+            </td>
+            <td>{{p.productName|uppercase}}</td>
+            <td>{{p.price|currency:'INR'}}</td>
+            <td>{{p.starRating}}</td>
+            <td>
+                <button type="button">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
+@else {
+<div>
+    <span>No product records</span>
+</div>
+}
