@@ -1,0 +1,6 @@
+<div>
+    <app-filter-input (filterValueChanged)="filterdata.set($event)">
+    </app-filter-input>
+    <br>
+    <app-product-list [filterText]="filterdata()"></app-product-list>
+</div>
