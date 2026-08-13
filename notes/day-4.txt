@@ -75,3 +75,33 @@ The input that you provide to the link is treated as a delta to the current URL.
 You can use absolute or relative paths in a link, set query parameters, control how parameters are handled, and keep a history of navigation states.
 
 
+Form Handling:
+--------------------------
+1. Reactive Forms: handling form through component code
+a. reusable
+b. can be unit tested easily
+c. synchronous
+d. you get what you see
+e. for larger forms
+
+package: @angular/forms
+common types: FormControl, FormGroup etc.
+
+module: ReactiveFormsModule
+directives: formGroup, formControl, formControlName etc.
+validators: Validators.required, Validators.email etc.
+
+2. Template Driven Forms: handling form through component template
+a. not reusable
+b. can be unit tested, but no so easily
+c. asynchronous
+d. don't get to see FormControl and FormGroup objects
+e. use for smaller forms
+
+package: @angular/forms
+common types: FormControl, FormGroup etc.
+
+module: FormsModule
+directives: ngModel, ngForm, required, email etc.
+
+

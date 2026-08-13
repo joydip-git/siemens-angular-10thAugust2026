@@ -1,0 +1,20 @@
+<form ngForm #x="ngForm" (submit)="submit(x)">
+    <div>
+        <label for="txtFirst">First: &nbsp;</label>
+        <input type="text" id="txtFirst" ngModel #first="ngModel" name="firstCtrl" required email>
+    </div>
+    @if(first.control.invalid && (first.control.dirty|| first.control.touched)){
+        <div>
+            @if(first.control.errors?.['required']){
+                <span>value required</span>
+            }
+        </div>
+    }
+    <div>
+        <label for="txtSecond">Second: &nbsp;</label>
+        <input type="text" id="txtSecond" ngModel #second="ngModel"  name="secondCtrl" required>
+    </div>
+    <div>
+        <button type="submit" [disabled]="x.invalid">Submit</button>
+    </div>
+</form>

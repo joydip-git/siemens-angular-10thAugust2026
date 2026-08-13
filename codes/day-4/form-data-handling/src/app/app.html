@@ -1,0 +1,43 @@
+<form method="post" [formGroup]="valueForm" (submit)="submit()">
+  <div>
+    <label for="txtFirst">First: &nbsp;</label>
+    <!-- <input type="text" id="txtFirst" [formControl]="firstCtrl"> -->
+    <input type="text" id="txtFirst" formControlName="firstCtrl">
+  </div>
+  @if(firstCtrl?.invalid && (firstCtrl?.dirty||firstCtrl?.touched)){
+  <div>
+    @if(firstCtrl?.errors?.['required']){
+    <span>Value required</span>
+    }
+
+    @if(firstCtrl?.errors?.['email']){
+    <span>enter value in email format</span>
+    }
+  </div>
+  }
+  <div>
+    <label for="txtSecond">Second: &nbsp;</label>
+    <!-- <input type="text" id="txtSecond" [formControl]="secondCtrl"> -->
+    <input type="text" id="txtSecond" formControlName="secondCtrl">
+  </div>
+  @if(secondCtrl?.invalid && (secondCtrl?.dirty||secondCtrl?.touched)){
+  <div>
+    @if(secondCtrl?.errors?.['required']){
+    <span>Value required</span>
+    }
+
+    @if(secondCtrl?.errors?.['length']){
+    <span>current lenth is:{{secondCtrl?.errors?.['length'].current}} expected between
+      {{secondCtrl?.errors?.['length'].min}} and {{secondCtrl?.errors?.['length'].max}}</span>
+    }
+  </div>
+  }
+  <div>
+    <button type="submit" [disabled]="valueForm.invalid">Submit</button>
+  </div>
+</form>
+
+<br>
+<br>
+<br>
+<app-second></app-second>
