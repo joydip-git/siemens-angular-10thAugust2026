@@ -1,3 +1,68 @@
-<p>product-detail works!</p>
-<br>
-<button type="button" class="btn btn-primary" (click)="goToEdit()">Edit</button>
+@if(!isRequestOver()){
+<div>
+    <span>Loading...</span>
+</div>
+}@else if(errorMessage()!==''){
+<div>
+    <span>{{errorMessage()}}</span>
+</div>
+}@else if(!product()){
+<div>
+    <span>No Record found...</span>
+</div>
+}@else{
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading large-font">
+            Details of: &nbsp;{{product()?.productName}}
+            <a class="btn btn-primary edit-btn" (click)="goToEdit()">
+                Edit
+            </a>
+        </div>
+    </div>
+    <hr>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">Name:&nbsp;</div>
+                    <div class="col-md-6">{{product()?.productName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Code:&nbsp;</div>
+                    <div class="col-md-6">{{product()?.productCode}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Description:&nbsp;</div>
+                    <div class="col-md-6">{{product()?.description}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Availability:&nbsp;</div>
+                    <div class="col-md-6">{{product()?.releaseDate}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Price:&nbsp;</div>
+                    <div class="col-md-6">{{product()?.price|currency:'INR'}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Rating:&nbsp;</div>
+                    <div class="col-md-6">
+                        {{product()?.starRating}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="center-block img-responsive" [style.width.px]="200" [src]="product()?.imageUrl"
+                    [title]="product()?.productName" alt="NA">
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button routerLink="/products" class="btn btn-primary back-btn" type="button">
+            <i class="bi bi-arrow-left-square"></i>
+            &nbsp;&nbsp;
+            Back
+        </button>
+    </div>
+</div>
+}

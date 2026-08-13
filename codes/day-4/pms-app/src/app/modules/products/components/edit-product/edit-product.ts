@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ProductStorageService } from '../../services/product-storage.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -6,4 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './edit-product.html',
   styleUrl: './edit-product.css',
 })
-export class EditProduct {}
+export class EditProduct implements OnInit {
+  private productStoreSvc = inject(ProductStorageService)
+
+  ngOnInit(): void {
+    const p = this.productStoreSvc.store()
+    console.log(p ? p : 'NA');
+  }
+
+}

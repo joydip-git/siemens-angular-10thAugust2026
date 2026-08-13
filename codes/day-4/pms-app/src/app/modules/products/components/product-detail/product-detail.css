@@ -1,0 +1,13 @@
+.large-font {
+    font-size: large;
+}
+
+.edit-btn {
+    width: 80px;
+    float: right;
+}
+
+.back-btn {
+    margin-top: 20px;
+    text-align: center;
+}

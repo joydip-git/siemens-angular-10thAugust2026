@@ -1,14 +1,27 @@
-@if(products().length>0){
+@if (!isRequestOver()) {
+<div>
+    <span>Loading...</span>
+</div>
+}@else if(errorInfo()!==''){
+<div>
+    <span>{{errorInfo()}}</span>
+</div>
+}
+@else if(products().length===0){
+<div>
+    <span>No product records</span>
+</div>
+}@else {
 <h2>List of Products</h2>
 <br>
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Rating</th>
-            <th>Delete</th>
+            <th scope="col">IMAGE</th>
+            <th scope="col">NAME</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">RATING</th>
+            <th scope="col">DELETE</th>
         </tr>
     </thead>
     <tbody class="table-secondary">
@@ -22,15 +35,12 @@
             <td>{{p.price|currency:'INR'}}</td>
             <td>{{p.starRating}}</td>
             <td>
-                <button type="button" class="btn btn-danger btn-box"> Delete</button>
+                <button title="delete" type="button" class="btn btn-danger btn-box"> 
+                    <i class="bi bi-trash3-fill"></i>
+                </button>
             </td>
         </tr>
         }
     </tbody>
 </table>
-}
-@else {
-<div>
-    <span>No product records</span>
-</div>
 }
