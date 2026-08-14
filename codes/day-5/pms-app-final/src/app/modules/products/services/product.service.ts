@@ -15,10 +15,6 @@ export class ProductService implements ServiceContract {
     }
 
     getProducts(): Observable<ApiResponse<Product[]>> {
-        return this._http.get<ApiResponse<Product[]>>(PRODUCT_API_URL, {
-            headers: {
-                Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODY2ODE3MzcsImV4cCI6MTc4NjY4MjkzN30.h_xJAS7zDQm5I2Dxo9C2FccPYTlbhvdSfhfxFAANA1M'
-            }
-        })
+        return this._http.get<ApiResponse<Product[]>>(PRODUCT_API_URL)
     }
 }
