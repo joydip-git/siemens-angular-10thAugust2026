@@ -20,7 +20,7 @@ export class ProductList implements OnInit, OnDestroy {
   errorInfo = signal('')
   isRequestOver = signal(false)
 
-  private productSvcRef = inject(PRODUCT_SERVICE_TOKEN)
+  productSvcRef = inject(PRODUCT_SERVICE_TOKEN)
   private fetchSubscription?: Subscription;
   private deleteSubscription?: Subscription;
 

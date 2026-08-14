@@ -17,3 +17,5 @@ const AuthGurad:CanActivateFn = ()=>{}
 
 
 https://forms.gle/d1YDCGpgQzmbr5yi7
+
+TestBody<PlaywrightTestArgs & PlaywrightTestOptions & PlaywrightWorkerArgs & PlaywrightWorkerOptions>
