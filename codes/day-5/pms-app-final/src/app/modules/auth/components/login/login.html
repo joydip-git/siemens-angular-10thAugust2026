@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-6-offest-3">
+            <form class="form-horizontal" [formGroup]="loginForm" (submit)="submit()">
+
+                <div class="form-group">
+                    <label for="txtUserName" class="form-label mt-4">
+                        Username:
+                    </label>
+                    <input type="text" id="txtUserName" class="form-control" formControlName="username">
+                </div>
+
+                @if(username){
+                @if(username.invalid && (username.dirty || username.touched)){
+
+                <div class="alert alert-danger">
+                    @if(username.errors?.['required']){
+                    <span>username is required</span>
+                    }
+
+                    @if(username.errors?.['email']){
+                    <span>username should be in email format</span>
+                    }
+                </div>
+
+                }
+                }
+                <div class="form-group">
+                    <label for="txtPassword" class="form-label mt-4">
+                        Password:
+                    </label>
+                    <input type="password" id="txtPassword" class="form-control" formControlName="password">
+                </div>
+                @if(password){
+                @if(password.invalid && (password.dirty || password.touched)){
+
+                <div class="alert alert-danger">
+                    @if(password.errors?.['required']){
+                    <span>password is required</span>
+                    }
+                </div>
+                }
+                }
+                <br>
+                <div class="container-fluid btn-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
