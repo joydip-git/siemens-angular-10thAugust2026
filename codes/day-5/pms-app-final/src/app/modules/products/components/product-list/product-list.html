@@ -35,7 +35,7 @@
             <td>{{p.price|currency:'INR'}}</td>
             <td>{{p.starRating}}</td>
             <td>
-                <button title="delete" type="button" class="btn btn-danger btn-box"> 
+                <button title="delete" type="button" class="btn btn-danger btn-box" (click)="delete(p.productId)"> 
                     <i class="bi bi-trash3-fill"></i>
                 </button>
             </td>

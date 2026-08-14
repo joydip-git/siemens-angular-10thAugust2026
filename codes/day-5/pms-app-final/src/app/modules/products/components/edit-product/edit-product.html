@@ -1,76 +1,70 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-6 col-md-6-offest-3">
-            <form class="form-horizontal">
+            @if(editForm){
+            <form class="form-horizontal" [formGroup]="editForm" (submit)="edit()">
                 <fieldset>
                     <legend>Update Form: </legend>
                     <div class="form-group">
                         <label for="productId" class="form-label mt-4">
                             Id:
                         </label>
-                        <input type="number" name="productId" id="productId" placeholder="enter product id"
-                            class="form-control">
+                        <input type="number" id="productId" class="form-control" formControlName="productId" readonly>
                     </div>
 
                     <div class="form-group">
                         <label for="productName" class="form-label mt-4">
                             Name:
                         </label>
-                        <input type="text" name="productName" id="productName" placeholder="enter product name"
-                            class="form-control">
+                        <input type="text" id="productName" class="form-control" formControlName="productName">
                     </div>
 
                     <div class="form-group">
                         <label for="productCode" class="form-label mt-4">
                             Code:
                         </label>
-                        <input type="text" name="productCode" id="productCode" placeholder="enter product code"
-                            class="form-control">
+                        <input type="text" id="productCode" class="form-control" formControlName="productCode">
                     </div>
 
                     <div class="form-group">
                         <label for="description" class="form-label mt-4">
                             Description:
                         </label>
-                        <input type="text" name="description" id="description" placeholder="enter product description"
-                            class="form-control">
+                        <textarea id="description" class="form-control" formControlName="description">
+                        </textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="releaseDate" class="form-label mt-4">
                             Released On:
                         </label>
-                        <input type="datetime" name="releaseDate" id="releaseDate" class="form-control"
-                            placeholder="enter product releaseDate">
+                        <input type="date" id="releaseDate" class="form-control" formControlName="releaseDate">
                     </div>
 
                     <div class="form-group">
                         <label for="price" class="form-label mt-4">
                             Price:
                         </label>
-                        <input type="number" name="price" id="price" class="form-control"
-                            placeholder="enter product price">
+                        <input type="number" id="price" class="form-control" formControlName="price">
                     </div>
 
                     <div class="form-group">
                         <label for="starRating" class="form-label mt-4">
                             Rating:
                         </label>
-                        <input type="number" name="starRating" id="starRating" class="form-control"
-                            placeholder="enter product rating">
+                        <input type="number" formControlName="starRating" id="starRating" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="imageUrl" class="form-label mt-4">
                             URL:
                         </label>
-                        <input type="text" name="imageUrl" id="imageUrl" class="form-control"
-                            placeholder="enter product url">
+                        <input type="text" formControlName="imageUrl" id="imageUrl" class="form-control">
                     </div>
                     <br>
                     <div class="container-fluid btn-center">
                         <button type="submit" class="btn btn-primary">
-                            Add
+                            Edit
                         </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <button type="button" class="btn btn-danger">
@@ -79,6 +73,7 @@
                     </div>
                 </fieldset>
             </form>
+            }
         </div>
     </div>
 </div>

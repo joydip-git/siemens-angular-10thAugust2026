@@ -22,14 +22,40 @@ export class ProductList implements OnInit, OnDestroy {
 
   private productSvcRef = inject(PRODUCT_SERVICE_TOKEN)
   private fetchSubscription?: Subscription;
+  private deleteSubscription?: Subscription;
 
   ngOnInit(): void {
     this.fetchProducts()
   }
   ngOnDestroy(): void {
     this.fetchSubscription?.unsubscribe()
+    this.deleteSubscription?.unsubscribe()
+  }
+
+  delete(id: number) {
+    if (window.confirm('delete the product?')) {
+      this.isRequestOver.set(false)
+      this.deleteSubscription = this.productSvcRef.deleteProduct(id)
+        .subscribe({
+          next: (apiResponse) => {
+            if (apiResponse.data !== null) {
+              //this.products.set(apiResponse.data)
+              window.alert(apiResponse.message)
+            } else {
+              window.alert(apiResponse.message)
+            }
+          },
+          error: (err) => {
+            window.alert(err.message)
+          },
+          complete: () => {
+            this.fetchProducts()
+          }
+        })
+    }
   }
   private fetchProducts() {
+    this.isRequestOver.set(false)
     const obs: Observable<ApiResponse<Product[]>> = this.productSvcRef
       .getProducts();
     this.fetchSubscription =

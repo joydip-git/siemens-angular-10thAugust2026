@@ -11,12 +11,12 @@
     },
     {
         "productId": 2,
-        "price": 500,
         "productName": "Garden Cart",
-        "description": "15 gallon capacity rolling garden cart",
         "productCode": "GDN-0023",
-        "releaseDate": "March 18, 2019",
+        "price": 600,
+        "description": "15 gallon capacity rolling garden cart",
         "starRating": 4,
+        "releaseDate": "March 18, 2019",
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
     },
     {
