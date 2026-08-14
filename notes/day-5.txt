@@ -1,0 +1,16 @@
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3ODY2ODE3MzcsImV4cCI6MTc4NjY4MjkzN30.h_xJAS7zDQm5I2Dxo9C2FccPYTlbhvdSfhfxFAANA1M
+
+auth gurads:
+	hekps you guard or protect routes from unauthorized access
+
+types of guards:
+	class			function
+
+	CanActivate: 		CanActivateFn:
+	CanDeactivate:		CanDeactivateFn:
+	CanActivateChild:	CanActivateChildFn:
+	CanMatch:		CanMatchFn:	
+
+class AuthGuard implements CanAcivate{}
+
+const AuthGurad:CanActivateFn = ()=>{}

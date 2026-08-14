@@ -7,11 +7,13 @@ import { Login } from './modules/auth/components/login/login';
 import { Registration } from './modules/auth/components/registration/registration';
 import { Home } from './modules/shared/components/home/home';
 import { PageNotFound } from './modules/shared/components/page-not-found/page-not-found';
+import { authGuard } from './modules/shared/services/auth-guard';
 
 export const routes: Routes = [
     {
         path: 'products',
         //outlet:'primary',
+        canActivate: [authGuard],
         children: [
             { path: '', component: ProductContainer },
             { path: 'view/:id', component: ProductDetail },

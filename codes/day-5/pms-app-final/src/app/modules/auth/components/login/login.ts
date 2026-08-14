@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { User } from '../../../../models/user';
 import { AuthService } from '../../services/auth.service';
 import { TokenStorageService } from '../../../shared/services/token-storage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,13 @@ import { TokenStorageService } from '../../../shared/services/token-storage.serv
   styleUrl: './login.css',
 })
 export class Login implements OnDestroy {
+
   private builder = inject(FormBuilder)
   private authSvc = inject(AuthService)
   private tokenSvc = inject(TokenStorageService)
+  private router = inject(Router)
+  private currentRoute = inject(ActivatedRoute)
+
   private loginSubscription?: Subscription;
 
   loginForm = this.builder.group({
@@ -44,7 +49,14 @@ export class Login implements OnDestroy {
         error: (err) => {
           window.alert(err.message)
         },
-        complete: () => { }
+        complete: () => {
+          const snapshot = this.currentRoute.snapshot
+          const returnUrl = snapshot.queryParams["returnUrl"]
+          if (returnUrl) {
+            this.router.navigate([returnUrl])
+          } else
+            this.router.navigate(['/products'])
+        }
       })
   }
 

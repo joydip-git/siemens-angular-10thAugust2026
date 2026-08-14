@@ -25,7 +25,7 @@ modules\auth\components
 http://localhost:4200/login			-> Login
 http://localhost:4200/register			-> Registration
 
-http://localhost:4200/login?returnUrl=%2Fproducts -> 
+http://localhost:4200/login?returnUrl=/products/add -> 
 
 
 
