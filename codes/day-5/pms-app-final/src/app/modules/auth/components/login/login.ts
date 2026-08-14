@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from '../../../../models/user';
 import { AuthService } from '../../services/auth.service';
+import { TokenStorageService } from '../../../shared/services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,10 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {
+export class Login implements OnDestroy {
   private builder = inject(FormBuilder)
   private authSvc = inject(AuthService)
+  private tokenSvc = inject(TokenStorageService)
   private loginSubscription?: Subscription;
 
   loginForm = this.builder.group({
@@ -29,15 +31,21 @@ export class Login {
 
   submit() {
     const user = this.loginForm.value
-    this.loginSubscription = this.authSvc.login(user as User).subscribe({
-      next: (apiResponse) => {
-        console.log(apiResponse);
-      },
-      error: (err) => {
-        window.alert(err.message)
-      },
-      complete: () => { }
-    })
+    this.loginSubscription = this.authSvc
+      .login(user as User)
+      .subscribe({
+        next: (apiResponse) => {
+          if (apiResponse.data !== null) {
+            this.tokenSvc.saveToken(apiResponse.data)
+          } else {
+            window.alert(apiResponse.message)
+          }
+        },
+        error: (err) => {
+          window.alert(err.message)
+        },
+        complete: () => { }
+      })
   }
 
   ngOnDestroy(): void {
