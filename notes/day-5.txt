@@ -14,3 +14,6 @@ types of guards:
 class AuthGuard implements CanAcivate{}
 
 const AuthGurad:CanActivateFn = ()=>{}
+
+
+https://forms.gle/d1YDCGpgQzmbr5yi7
